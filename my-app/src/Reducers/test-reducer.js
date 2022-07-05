@@ -7,6 +7,8 @@ const testRedoucer = (state = 0,  action) => {
             return state + 1;
         default:
             return state;
+        case 'REMOVEVAL':
+            return state - 1
     }
 }
 

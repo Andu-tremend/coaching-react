@@ -4,6 +4,11 @@ export  const addVal = () => {
     }
 }
 
+export const removeVal = () => {
+    return {
+        type: 'REMOVEVAL'
+    }
+}
 
 export const changeBool = () => {
     return {

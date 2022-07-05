@@ -1,11 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import './style.css';
 import App from './Components/App';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import allReducers from './Reducers/index';
+import '../src/sass/style.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 
 const store = createStore(
   allReducers,

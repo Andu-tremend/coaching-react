@@ -1,0 +1,12 @@
+@mixin flex {
+    display:flex;
+    
+}
+
+@mixin space-between {
+    @include flex;
+     justify-content: space-between;
+}
+
+
+

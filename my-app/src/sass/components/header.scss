@@ -1,0 +1,12 @@
+header {
+    background-color: $secondary_red;
+    padding:2rem 0;
+}
+
+
+nav ul {
+    @include space-between;
+    color: $white_color;
+    list-style:none
+}
+

@@ -1,6 +1,43 @@
-header {
-    background-color: $secondary_red;
+@mixin header-spacing {
+   
     padding:2rem 0;
+}
+
+@mixin logo-font {
+    font-size:$standard_font_size * 2.1;
+    font-weight:600;
+    font-style:italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.header__rick {
+    @include header-spacing;
+    background-color: $rick_turquoise;
+    & nav ul {
+        color: $rick_dark_grey
+    }
+
+    & .logo {
+        color: $rick_dark_grey;
+        @include logo-font
+        
+    }
+}
+
+.header__morty {
+    @include header-spacing;
+    background-color:$morty_dark_blue;
+
+    & nav ul {
+        color: $morty_yellow;
+        
+    }
+
+    & .logo {
+        color: $morty_yellow;
+        @include logo-font
+        
+    }
 }
 
 

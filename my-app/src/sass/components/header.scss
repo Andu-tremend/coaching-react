@@ -1,12 +1,74 @@
-header {
-    background-color: $secondary_red;
+@mixin header-spacing {
+   
     padding:2rem 0;
 }
 
-
-nav ul {
-    @include space-between;
-    color: $white_color;
-    list-style:none
+@mixin logo-font {
+    font-size:$standard_font_size * 2.1;
+    font-weight:600;
+    font-style:italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
 }
 
+@mixin flex__vertical-align {
+    display:flex;
+    align-items: center
+}
+
+
+
+
+.header__rick {
+    @include header-spacing;
+    
+    background-color: $rick_turquoise;
+    & nav ul {
+        color: $rick_dark_grey
+    }
+
+    & .logo {
+        color: $rick_dark_grey;
+        @include logo-font
+        
+    }
+}
+
+.header__morty {
+    @include header-spacing;
+    background-color:$morty_dark_blue;
+    
+    & nav ul {
+        color: $morty_yellow;
+        
+    }
+
+    & .logo {
+        color: $morty_yellow;
+        @include logo-font
+        
+    }
+}
+
+nav {
+    width:100%;
+    & ul {
+        @include space-between;
+        color: $white_color;
+        list-style:none;
+        margin-bottom:0;
+    }
+}
+
+
+.header__menu-wrapper,
+.theme-toggle__wrapper
+ {
+    @include flex__vertical-align
+}
+
+.theme-toggle__wrapper {justify-content: flex-end;
+    & button {
+        border:none;
+        font-size:$standard_font_size;
+        font-weight: 700;
+    }}

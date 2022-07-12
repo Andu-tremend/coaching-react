@@ -1,0 +1,61 @@
+/* Color palette */
+.header__rick {
+  padding: 2rem 0;
+  background-color: #AEE6E3;
+}
+.header__rick nav ul {
+  color: #756951;
+}
+.header__rick .logo {
+  color: #756951;
+  font-size: 2.1rem;
+  font-weight: 600;
+  font-style: italic;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.header__morty {
+  padding: 2rem 0;
+  background-color: #2F4368;
+}
+.header__morty nav ul {
+  color: #FAF76B;
+}
+.header__morty .logo {
+  color: #FAF76B;
+  font-size: 2.1rem;
+  font-weight: 600;
+  font-style: italic;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+nav {
+  width: 100%;
+}
+nav ul {
+  display: flex;
+  justify-content: space-between;
+  color: #ffffff;
+  list-style: none;
+  margin-bottom: 0;
+}
+
+.header__menu-wrapper,
+.theme-toggle__wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.theme-toggle__wrapper {
+  justify-content: flex-end;
+}
+.theme-toggle__wrapper button {
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+main {
+  background-color: #ffffff;
+  color: #000000;
+}/*# sourceMappingURL=style.css.map */

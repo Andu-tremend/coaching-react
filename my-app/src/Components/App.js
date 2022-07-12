@@ -1,32 +1,32 @@
-import {useState, useEffect} from 'react';
 import Header from './Header'
 import Body from './Body';
+import Login from './login';
+
 
 export default function App(){
+let logged = false;
 
-    const [data, setData] = useState({});
-
-  
-    const options = {
-        method: 'GET',
-    }
-        
-        useEffect(  () => {
-
-            fetch('https://rickandmortyapi.com/api/episode', options)
-            .then(response => response.json())
-            .then(response => setData(response))   
-            .catch(error => console.error(error))
-
-           
-    }, []);
-
-    // console.log(data.results)
-
-    return (
-        <>
+    // Puteam sa am 2 componente si sa le afisez cu turnary, dar momentan doar am testez
+    // iar dupa o sa uit sa modific 
+    if (logged) {
+        return (
+            <>
             <Header />
-            <Body title="Test counter for redux learning" />
-        </>
-    )
+            <Body title="Rick and morty learning app" />
+            </>
+        )
+    }
+    else {
+        return (
+            <>
+                <Login />
+            </>
+        )
+    }
+
+
+    
+
+
+
 }

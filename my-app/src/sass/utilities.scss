@@ -9,4 +9,16 @@
 }
 
 
+.v-padding {
+    &-medium {
+        padding: $size_medium 0;
+    }
+
+    &-large {
+        padding:$size_large 0
+    }
+    
+}
+
+
 

@@ -11,7 +11,7 @@ $tertiary_grey:#564d4d;
 
 // Color palette Rick
 $rick_turquoise: #AEE6E3;
-$rick_blue: #BBE0F2;
+$rick_blue: #a9d3e9;
 $rick_light_grey:#DBD6D0;
 $rick_dark_grey:#756951;
 $rick_white: #FCFAFB;
@@ -24,12 +24,19 @@ $morty_brown: #87501F;
 $morty_light_orange:#F7C49D;
 $morty_white: #EAEAEA;
 
-
-
-
-
-
 // Fonts
 
 $standard_font_size: 1rem; // 16px
+
+
+
+// Sizes
+
+$base-size: $standard_font_size;
+$size_medium: $standard_font_size * 2;
+$size_large: $standard_font-size * 3;
+$size_xlarge: $standard_font-size * 4;
+
+
+
 

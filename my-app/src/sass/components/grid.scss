@@ -1,0 +1,14 @@
+.homepage-grid {
+    @include space-between;
+    flex-wrap: wrap;
+    row-gap:2rem;
+
+    &__item {
+        flex: 0 0 calc(100% / 3);
+        width:100%;
+        display:flex;
+        justify-content: center;
+        flex-direction: column;
+        padding:2rem
+    }
+}

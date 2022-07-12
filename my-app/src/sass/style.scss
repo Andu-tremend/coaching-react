@@ -1,7 +1,9 @@
 @import './variables';
 @import './utilities';
 @import './components/header';
-
+@import './components/grid.scss';
+@import './components/theme.scss';
+@import './components/autentification.scss';
 
 main {
     background-color:$white_color;

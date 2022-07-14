@@ -5,12 +5,12 @@ import {useState, useEffect} from 'react';
 
 
 
-export default function Body (props) {
+export default function Body (props: any) {
 
     const dispatch = useDispatch();
-    const toggleValue = useSelector((state) => state);
+    const toggleValue = useSelector((state:any) => state);
 
-    const [rickData, setRickData] = useState([]);
+    const [rickData, setRickData] = useState<any>([]);
     const [URL, setURL] = useState('https://rickandmortyapi.com/api/character')
 
     
@@ -30,12 +30,12 @@ export default function Body (props) {
     
 
 
-    function handleSelect(e) {
+    function handleSelect(e:any) {
         // setURL(e.target.value)
         
     }
     
-    let episodes = rickData.map(item => {
+    let episodes = rickData.map((item:any) => {
         if (item) {
             
             return (
@@ -46,7 +46,7 @@ export default function Body (props) {
                     <div className='item__episode-list'>
                     Episodes:
                    {item.episode && <select onChange={handleSelect}>
-                        {item.episode.map( elem => {
+                        {item.episode.map( (elem:any) => {
                             return (                    
                                 <option value={elem}>{elem}</option>  
                                     )

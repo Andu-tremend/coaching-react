@@ -5,11 +5,11 @@ import {toggleAction} from '../Actions/actions'
 
 
 
-export default function Header(props) {
+export default function Header(props: any) {
 
     const dispatch = useDispatch();
 
-    const toggleValue = useSelector((state) => state);
+    const toggleValue = useSelector((state: any) => state);
 
 
     function toggler() {

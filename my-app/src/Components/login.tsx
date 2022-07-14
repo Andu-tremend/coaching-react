@@ -1,6 +1,6 @@
 import store from '../Store/store';
 import users from '../Login/users';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 
 export default function Login() {
@@ -14,7 +14,7 @@ export default function Login() {
    
     let loggedIn;
 
-    function handleSubmit(event) {
+    function handleSubmit(event: { preventDefault: () => void; }) {
         event.preventDefault();     
         
         if (users.username == inputVal.username && users.password == inputVal.password ) {
@@ -29,7 +29,7 @@ export default function Login() {
     }
 
     
-    function handleChange(inputType) {
+    function handleChange(inputType: ChangeEvent<HTMLInputElement>) {
         
         setInputVal((elem) => {
             return {

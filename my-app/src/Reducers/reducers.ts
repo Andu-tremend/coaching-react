@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
-import {fetchInitialData} from '../Actions/actions'
+// import {fetchInitialData} from '../Actions/actions'
 
-const themeReducer = (state = true, action) => {
+const themeReducer = (state = true, action: { type: string; }) => {
     if (action.type === 'THEME_TOGGLE') {
         return !state;
     }

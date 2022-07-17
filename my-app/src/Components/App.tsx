@@ -2,13 +2,14 @@ import Header from './Header';
 import Body from './Body';
 import Login from './login';
 import React from 'react';
+import {loggedIn} from '../Actions/actions';
+import {useSelector, useDispatch} from 'react-redux';
+
 
 
 export default function App(){
 let logged = true;
 
-    // Puteam sa am 2 componente si sa le afisez cu turnary, dar momentan doar am testez
-    // iar dupa o sa uit sa modific 
     if (logged) {
         return (
             <div>
@@ -19,9 +20,9 @@ let logged = true;
     }
     else {
         return (
-            <>
+            <main className='autentification-main-wrapper'>
                 <Login />
-            </>
+            </main>
         )
     }
 

@@ -1,3 +1,4 @@
+import users from '../Login/users';
 
 export const toggleAction = () => {
     return {
@@ -6,14 +7,18 @@ export const toggleAction = () => {
     }
 }
 
-// export const fetchInitialData = function() {
-//     const getData = async () => {
-//         const response = await fetch('https://rickandmortyapi.com/api/character')
-//         let json = await response.json();
-//         return json.results
-//     }
-//     return {
-//         type: 'FETCH_DATA',
-//         payload: getData
-//     }
-// }
+export const loggedIn = (args:object ) => {
+    return {
+        type: 'SUCCESS_LOGIN',
+        payload: args
+    }
+}
+
+
+export const displayList = (type: string) => {
+    return {
+        type: type,
+        payload: "Items display type"
+    }
+}
+

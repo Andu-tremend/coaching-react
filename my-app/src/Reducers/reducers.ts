@@ -10,16 +10,38 @@ const themeReducer = (state = true, action: { type: string; }) => {
 
 }
 
+const autentificationInitialState = {
+    username: "",
+    password: ""
+}
 
+const logedInReducer = (state = autentificationInitialState, action: {type: any; payload: any}) => {
+    if (action.type === 'SUCCESS_LOGIN') {
+        return {
+               ...state,
+               username: action.payload.username,
+               password: action.payload.password
+            }
+    } 
 
-// const DataReducer = (state = [], action) => {
-//     if (action.type === 'FETCH_DATA') {
-//         return [action.payload, ...state]
-//     } else {
-//         return state
-//     }
-// }
+    return state
+}
+
+const itemsDisplayTypeReducer = (state = {display: "grid"}, action: {type: string}) => {
+    if (action.type === 'LIST') {
+        return {...state, 
+            display: "list"}
+    } else if (action.type === 'GRID'){
+        return {...state, 
+            display: "grid"}
+    }
+
+    return state
+}
+
 
 export default combineReducers ({
-    themeReducer: themeReducer
+    themeReducer: themeReducer,
+    logedInReducer,
+    itemsDisplayTypeReducer
 })

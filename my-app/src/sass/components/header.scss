@@ -53,7 +53,7 @@ nav {
     width:100%;
     & ul {
         @include space-between;
-        color: $white_color;
+        color: $rick_white;
         list-style:none;
         margin-bottom:0;
     }
@@ -63,12 +63,26 @@ nav {
 .header__menu-wrapper,
 .theme-toggle__wrapper
  {
-    @include flex__vertical-align
+    @include flex__vertical-align;
+    
 }
 
 .theme-toggle__wrapper {justify-content: flex-end;
-    & button {
-        border:none;
-        font-size:$standard_font_size;
-        font-weight: 700;
-    }}
+    .theme-toggle__slider {
+        width:$size_xlarge ;
+        height:$size_medium;
+        background:$rick_white;
+        border-radius:$size_xlarge;
+        position: relative;
+        img {
+            cursor: pointer;
+            transition: left .3s linear;
+            position: absolute;
+            top:-$base-size / 2;
+            left:-$base-size / 2;
+            &.toggled-rick {
+                left:calc(100% - $base-size * 2.5)
+            }
+        }
+    }
+    }

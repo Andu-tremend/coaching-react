@@ -1,72 +1,75 @@
 import store from '../Store/store';
 import users from '../Login/users';
 import { ChangeEvent, useState } from 'react';
+import {useSelector, useDispatch} from 'react-redux';
+import {loggedIn} from '../Actions/actions'
 
+// To be disscussed on coaching session
 
-export default function Login() {
+export default function Login(this: any) {
 
-   const [inputVal, setInputVal] = useState({
-        username: "",
-        password: ""
-       
-   })
+    const dispatch = useDispatch();
 
-   
-    let loggedIn;
+    const isLoggedIn = useSelector((state: any) => state.logedInReducer);
+
+    const [inputVal, setInputVal] = useState({
+            username: "",
+            password: ""
+    })
+
 
     function handleSubmit(event: { preventDefault: () => void; }) {
-        event.preventDefault();     
-        
-        if (users.username == inputVal.username && users.password == inputVal.password ) {
-            console.log("logged");
-            return loggedIn = true
+        event.preventDefault();    
+        console.log(isLoggedIn)
+        if (users.username === isLoggedIn.username && users.password === isLoggedIn.password ) {
+            console.log("true")
         } else {
-            console.log("mai incearca");
-            return loggedIn = false
-        };
-
-        
+            console.log("false")
+        }
     }
 
-    
-    function handleChange(inputType: ChangeEvent<HTMLInputElement>) {
-        
-        setInputVal((elem) => {
-            return {
-                ...elem,
-                [inputType.target.id]: inputType.target.value , 
-                
-            }
-            
-        })
-    }
+    function handleChange(event: any) {
+      setInputVal((oldVal) => {
+        return {
+            ...oldVal,
+            [event.target.name]: event.target.value
+        }
+      })
 
-   
+      dispatch(loggedIn(inputVal))
+       console.log(inputVal)
+    }
 
     return (
-        <div className="login-wrapper">
-            <form>
+        <div className='autentification__content-wrapper'>
+            <h1>Please login to access the site</h1>
+             <div className="autentification__login-wrapper">           
+                <form>
+                    
+                    <input name='username' 
+                        value={inputVal.username}
+                        type="text" 
+                        placeholder="User"
+                        onChange={handleChange}>
+                    </input>
+                    
+                    <input name='password' 
+                        value={inputVal.password} 
+                        type="password" 
+                        placeholder="Password"
+                        onChange={handleChange}>
+                    </input>
+                    
+                    <button onClick={handleSubmit}>SUBMIT</button>
+                </form>
                 
-                <input id='username' 
-                    value={inputVal.username} 
-                    type="text" 
-                    placeholder="User"
-                    onChange={(userEvent) => {handleChange(userEvent)}}>
-                </input>
-                
-                <input id='password' 
-                    value={inputVal.password} 
-                    type="password" 
-                    placeholder="Password"
-                    onChange={(passwordEvent) => {handleChange(passwordEvent)}}>
-                </input>
-                
-                <button onClick={handleSubmit}>SUBMIT</button>
 
-
-            </form>
-            <div>{loggedIn ? "Logged in succesfuly" : "Username or password inccorect"}</div>
-
+            </div>
         </div>
+       
     )
+}
+
+function logingIn(): any {
+    throw new Error('Function not implemented.');
 }

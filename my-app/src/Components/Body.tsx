@@ -1,78 +1,40 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {toggleAction} from '../Actions/actions';
 import {useState, useEffect} from 'react';
-
-
+import Grid from './Grid';
+import List from './List';
+import GridToggle from './grid-toggle';
 
 
 export default function Body (props: any) {
 
     const dispatch = useDispatch();
-    const toggleValue = useSelector((state:any) => state);
-
+    const storeState = useSelector((state:any) => state);
+    const displayType = storeState.itemsDisplayTypeReducer.display
     const [rickData, setRickData] = useState<any>([]);
     const [URL, setURL] = useState('https://rickandmortyapi.com/api/character')
 
-    
-
     useEffect( () => {
-      
+    
         const getData = async () => {
             const response = await fetch(URL)
             let json = await response.json();
-            setRickData(json.results)
+            setRickData(json.results);
+            // console.log(json.results)
         }
         getData();
         
 
     }, [URL]);
 
-    
-
-
-    function handleSelect(e:any) {
-        // setURL(e.target.value)
-        
-    }
-    
-    let episodes = rickData.map((item:any) => {
-        if (item) {
-            
-            return (
-                <div key={item.id} className="homepage-grid__item">
-                    {item.image && <img src={item.image} alt="item.name" />}
-                    {item.name &&<div>{item.name}</div>}
-                    {item.created && <div>Release date{item.created}</div> }
-                    <div className='item__episode-list'>
-                    Episodes:
-                   {item.episode && <select onChange={handleSelect}>
-                        {item.episode.map( (elem:any) => {
-                            return (                    
-                                <option value={elem}>{elem}</option>  
-                                    )
-                        })
-                        }
-                    </select> }
-                    </div>
-                </div>
-            )
-        } else 
-        {
-            return (
-                <div>Loading...</div>
-            )
-        }
-        
-    });
-
-   
-   
-    
+ 
     return (
-        <main className={`theme__${toggleValue.themeReducer ? 'morty' : 'rick'} v-padding-large`}>
+        <main className={`theme__${storeState.themeReducer ? 'morty' : 'rick'} v-padding-large`}>
                 <div className='container'>
                     <h1>{props.title}</h1>
-                    <div className='homepage-grid'>{episodes}</div>
+                    <GridToggle  />
+                    { displayType === 'grid' ? <Grid gridView={rickData}/> :
+                    <List listView={rickData} /> }
                     
                 </div>
         </main>

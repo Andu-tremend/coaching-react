@@ -8,8 +8,7 @@ import {connect} from 'react-redux';
  class GridToggle extends React.Component {
     constructor(props: any) {
         super(props);
-        this.state = { 
-        };
+        
 
     };
 
@@ -20,7 +19,6 @@ import {connect} from 'react-redux';
     }
 
    
-
     render() {
 
         // const stateTest = store.getState();

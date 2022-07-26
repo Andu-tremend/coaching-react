@@ -1,33 +1,36 @@
-import Header from './Header';
-import Body from './Body';
 import Login from './login';
-import React from 'react';
-import {loggedIn} from '../Actions/actions';
-import {useSelector, useDispatch} from 'react-redux';
+import {
+    BrowserRouter as Router,
+    Route,
+    Routes,
+  } from "react-router-dom";
 
-
+import PrivateRoute from './PrivateRoutes/privateRoute';
+import Homepage from './Homepage';
 
 export default function App(){
-let logged = true;
 
-    if (logged) {
-        return (
-            <div>
-            <Header />
-            <Body title="Rick and morty learning app" />
-            </div>
-        )
-    }
-    else {
-        return (
-            <main className='autentification-main-wrapper'>
-                <Login />
-            </main>
-        )
+    const cookie = () => {
+        const cookie: any = localStorage.getItem("user")
+        const parsedCookie = JSON.parse(cookie);
+        return parsedCookie
     }
 
 
-    
+    return (
+        <Router>
+            <Routes>
+                <Route
+                    path="/" 
+                    element={
+                        <PrivateRoute children={<Homepage />}/>
+                            }
+                    />
+                <Route path="/login" element={<Login />} />
+            </Routes>
+        </Router>
+    )
+
 
 
 

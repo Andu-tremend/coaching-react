@@ -1,9 +1,14 @@
 
 
 export default function Grid (props:any) {
+
+    
    
     let gridView = props.gridView.map((item:any) => {
- 
+        const rawDate = new Date(item.created);
+        
+        console.log( rawDate.getDay(), rawDate.getMonth(), rawDate.getFullYear())
+
         return (
             <div key={item.id} className="homepage-grid__item">
                 {item.image && <img src={item.image} alt="item.name" />}

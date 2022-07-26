@@ -3,7 +3,6 @@ import users from '../Login/users';
 export const toggleAction = () => {
     return {
         type: 'THEME_TOGGLE',
-        payload: 'theme style'
     }
 }
 
@@ -18,7 +17,6 @@ export const loggedIn = (args:object ) => {
 export const displayList = (type: string) => {
     return {
         type: type,
-        payload: "Items display type"
     }
 }
 

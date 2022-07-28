@@ -8,7 +8,7 @@ export default function List (props:any) {
                 <div className='image-wrapper'>{item.image && <img src={item.image} alt="item.name" />}</div>
                 <div className='content-wrapper'>
                     {item.name &&<div><span>Name:</span> {item.name}</div>}
-                    {item.created && <div><span>Release date:</span> {item.created}</div> }
+                    {item.created && <div><span>Release date:</span> {new Date(item.created).toLocaleDateString()}</div> }
                     {item.gender && <div><span>Gender:</span> {item.gender}</div>}
                     {item.origin && <div><span>Origin:</span> {item.origin.name}</div>}  
                     {item.location && <div><span>Location:</span> {item.location.name}</div>}  

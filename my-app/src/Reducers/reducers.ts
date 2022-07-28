@@ -41,8 +41,36 @@ const itemsDisplayTypeReducer = (state = {display: "grid"}, action: {type: strin
 }
 
 
+const pagination = (state:any = {currentPage: 1} , action: {type: string, payload: any}) => {
+
+    const pageNumber = (param: string) => {
+        const string = param;
+        const pageNr = string.slice(string.length -1, string.length)
+        return pageNr
+    }
+
+    switch (action.type) {
+        case 'NEXT':
+            
+            return {...action.payload.info,
+                pageDirection: action.payload.info.next,
+                currentPage: pageNumber(action.payload.info.next)
+        }
+           
+        case 'PREV':
+            return {...action.payload.info,
+                pageDirection: action.payload.info.prev,
+                currentPage: pageNumber(action.payload.info.prev)
+            }
+    }
+
+     return state
+}
+
+
 export default combineReducers ({
     themeReducer: themeReducer,
     logedInReducer,
-    itemsDisplayTypeReducer
+    itemsDisplayTypeReducer,
+    pagination
 })

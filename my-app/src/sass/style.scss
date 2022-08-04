@@ -6,6 +6,12 @@
 @import './components/autentification.scss';
 
 main {
-    background-color:$white_color;
-    color:$accent_black
+    background-color:$morty_white;
+    color:#000000;
+}
+
+p,
+li,
+blockquote {
+    color: #000000;
 }

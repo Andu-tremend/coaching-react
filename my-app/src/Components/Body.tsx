@@ -1,11 +1,11 @@
 import {useState, useEffect, useContext} from 'react';
 import Grid from './Grid';
 import List from './List';
-import GridToggle from './grid-toggle';
+import GridToggle from './Grid-toggle';
 import Pagination from './Pagination';
 import Filters from './Filters';
-import Loading from './loading';
-import {testContext} from './Context/Context';
+import Loading from './Loading';
+import {testContext} from '../Context/Context';
 import {useConditionalRender, useFetch} from '../Functions/index'
 import { useSelector } from 'react-redux';
 

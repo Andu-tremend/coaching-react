@@ -1,10 +1,10 @@
-import Login from './login';
+import Login from './Login';
 import {
     BrowserRouter as Router,
     Route,
     Routes,
   } from "react-router-dom";
-import PrivateRoute from './PrivateRoutes/privateRoute';
+import PrivateRoute from '../PrivateRoutes/PrivateRoute';
 import Homepage from './Homepage';
 export default function App(){
 

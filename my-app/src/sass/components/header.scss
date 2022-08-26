@@ -31,6 +31,17 @@
         @include logo-font
         
     }
+    .theme-toggle__wrapper {
+        & .user {
+            &__wrapper {
+                button {
+                    background-color: $rick_blue;
+                    color: $morty_dark_blue;
+                }
+            }
+        } 
+    }
+    
 }
 
 .header__morty {
@@ -105,7 +116,8 @@ nav {
             left: -100%;
             top: calc(100% + $base-size);
             min-width: $size_xlarge * 3;
-
+            z-index: 3;
+            box-shadow: 0px 1px 8px 0px rgb(0 0 0 / 10%);
             &::before {
                 content:"";
                 position: absolute;
@@ -116,6 +128,14 @@ nav {
                 left:28%; // will check later
                 transform:rotate(45deg);
 
+            }
+
+            & button {
+                border: none; 
+                background-color: $morty_dark_blue;
+                color: $morty_white;
+                padding: $base-size / 2 $base-size;
+                font-weight: 700;
             }
         }
 

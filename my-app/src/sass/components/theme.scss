@@ -1,10 +1,11 @@
 .theme {
     
     &__morty {
-        background-color: $morty_yellow
+        background-color: transparentize($color: $morty_dark_blue, $amount: 0.7); 
+
     };
 
     &__rick {
-        background-color:$rick_blue
+        background-color:$rick_blue;
     }
 }

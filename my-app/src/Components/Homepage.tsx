@@ -1,13 +1,16 @@
-import React from "react";
 import Header from "./Header";
 import Body from "./Body";
-
+import { testContext, appNamingData} from './Context/Context';
 
 export default function LoggedIn() {
+
+
     return (
         <div>
-            <Header />
-            <Body title="Rick and morty learning app" />
+            <testContext.Provider value={appNamingData}>
+                <Header />
+                <Body /> 
+            </testContext.Provider>
         </div>
     )
 }    

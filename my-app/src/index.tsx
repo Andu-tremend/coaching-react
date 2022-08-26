@@ -8,10 +8,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import store from './Store/store';
 
-
-
-
-
 const elem = document.getElementById('root') as HTMLElement;
 const root = ReactDOM.createRoot(elem);
 

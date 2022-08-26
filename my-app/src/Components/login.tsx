@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react';
-import Header from '../Components/Header';
+import Header from './Header';
 import {useSelector, useDispatch} from 'react-redux';
 import {loggedIn} from '../Actions/actions';
 import users from '../Login/users';
 import {useNavigate} from "react-router-dom";
+
 // To be disscussed on coaching session
 
 export default function Login() {
@@ -23,12 +24,9 @@ export default function Login() {
     
 
 
-    if (users.username == isLoggedIn.username && users.password == isLoggedIn.password ) {
-           const logged = true;
-            localStorage.setItem('loggedin', "DA");
-            navigate("/");
-    } else {
-          const logged = false;
+    if (users.username === isLoggedIn.username && users.password === isLoggedIn.password ) {
+        localStorage.setItem('loggedin', "DA");
+        navigate("/");
     }   
 
     

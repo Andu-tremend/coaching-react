@@ -4,7 +4,9 @@
 @import './components/grid.scss';
 @import './components/theme.scss';
 @import './components/autentification.scss';
-
+@import './components/pagination.scss';
+@import './components/filters.scss';
+@import './components/loading.scss';
 main {
     background-color:$morty_white;
     color:#000000;
@@ -15,3 +17,6 @@ li,
 blockquote {
     color: #000000;
 }
+
+// bootstrap doesn't have position on container?? 
+.container {position: relative}

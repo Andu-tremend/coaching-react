@@ -1,6 +1,6 @@
 import Header from "./Header";
 import Body from "./Body";
-import { testContext, appNamingData} from './Context/Context';
+import {testContext, appNamingData} from '../Context/Context';
 
 export default function LoggedIn() {
 

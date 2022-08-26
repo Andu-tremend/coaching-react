@@ -1,0 +1,54 @@
+@mixin form-inputs-padding {
+    padding: $base-size / 4 $base-size / 2;
+    border: none;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+    
+}
+
+.filters {
+    &__form-wrapper {
+        @include space-between;
+        gap: $base-size;
+        align-items: center;
+        @media(max-width:820px) {
+            flex-wrap:wrap;
+        }
+
+        & form {
+            position: relative;
+            & select {
+                @include form-inputs-padding;
+                outline: none;
+                &:focus {
+                    border-color: inherit;
+                    outline: none;
+                }
+
+                & option {
+                    border:none;
+                    outline: none;
+                }
+            }
+            & input[type=text] {
+                @include form-inputs-padding;
+                &:focus {
+                    outline: none;
+                    border-color: inherit;
+                }
+            }
+            & button {
+                border: none;
+                position: absolute;
+                right: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                background-color: transparent;
+                & img {
+                    width: $base-size;
+                }
+            }
+        }
+    
+    }
+}

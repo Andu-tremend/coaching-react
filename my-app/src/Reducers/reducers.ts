@@ -1,20 +1,31 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 import {combineReducers} from 'redux';
 
 const themeReducer = (state = true, action: { type: string; }) => {
     if (action.type === 'THEME_TOGGLE') {
         return !state;
     }
-    
     return state
 
 }
+
+// Login reducer
 
 const autentificationInitialState = {
     username: "",
     password: ""
 }
 
-const logedInReducer = (state = autentificationInitialState, action: {type: any; payload: any}) => {
+interface loginInterface {
+    type: string,
+    payload: {  
+            username: string,
+            password: string
+            }
+  
+}
+
+const logedInReducer = (state = autentificationInitialState, action: {type: loginInterface["type"], payload: loginInterface["payload"]}) => {
 
     switch(action.type) {
         case 'SUCCESS_LOGIN':
@@ -27,6 +38,8 @@ const logedInReducer = (state = autentificationInitialState, action: {type: any;
 
     return state
 }
+
+// Display GRID / LIST reducer
 
 const itemsDisplayTypeReducer = (state = {display: "grid"}, action: {type: string}) => {
     if (action.type === 'LIST') {
@@ -41,20 +54,32 @@ const itemsDisplayTypeReducer = (state = {display: "grid"}, action: {type: strin
 }
 
 
-const pagination = (state:any = {currentPage: 1} , action: {type: string, payload: any}) => {
+    //Pagination reducer
 
-    const pageNumber = (param: string) => {
-        const string = param;
-        const pageNr = string.slice(string.length -1, string.length)
-        return pageNr
-    }
+    const pagination = (state:any = {currentPage: 1} , action: {type: string, payload: any}) => {
+
+        const pageNumber = (string: string) => {
+
+            // I suck at naming stuff
+            const pageString = string.split("?").filter( items => items.includes("page") )
+            const pageStrArr = pageString[0].split("&");
+            const pageStrFinall = pageStrArr[0].toString();
+
+            let pageNr = pageStrFinall.slice(pageStrFinall.length -2)
+            if (pageNr.includes("=")) {
+                pageNr = pageStrFinall.slice(pageStrFinall.length -1)
+            }
+
+            return pageNr
+        }
+
 
     switch (action.type) {
         case 'NEXT':
             
             return {...action.payload.info,
                 pageDirection: action.payload.info.next,
-                currentPage: pageNumber(action.payload.info.next)
+                currentPage: pageNumber(action.payload.info.next),
         }
            
         case 'PREV':
@@ -68,9 +93,36 @@ const pagination = (state:any = {currentPage: 1} , action: {type: string, payloa
 }
 
 
+// FILTERS REDUCER
+
+const blankFilters = {
+    name: "",
+    status: "",
+    gender: ""
+}
+
+export const filterReducer = (state: object = blankFilters, action: {type: string, payload: string}) => {
+    switch(action.type) {
+        case 'filter-status':
+            return {...state,
+                status: action.payload}
+        case 'filter-gender':
+            return {...state,
+                gender: action.payload}
+        case 'filter-name':
+            return {...state,
+            name: action.payload}
+    }
+
+
+    return state
+}
+
+
 export default combineReducers ({
     themeReducer: themeReducer,
     logedInReducer,
     itemsDisplayTypeReducer,
-    pagination
+    pagination,
+    filterReducer
 })

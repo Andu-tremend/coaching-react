@@ -2,11 +2,14 @@
 import {useSelector, useDispatch} from 'react-redux';
 import {toggleAction} from '../Actions/actions'
 import LoggedUser from './LoggedUser';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import {testContext} from './Context/Context';
 
 
 
-export default function Header(props: any) {
+export default function Header() {
+
+    const contextVal = useContext(testContext)
 
     const dispatch = useDispatch();
 
@@ -16,7 +19,6 @@ export default function Header(props: any) {
     function toggler() {
         dispatch(toggleAction())
         localStorage.setItem("themeCookie", toggleValue.themeReducer);
-
     }
 
 
@@ -45,7 +47,7 @@ export default function Header(props: any) {
                         </div>
                     </div>
                     <div className="col-lg-7 header__menu-wrapper">
-                        <h1 style={{color: '#fff', margin: 'auto'}}>Rick and morty WIP APP</h1>
+                        <h1 style={{color: '#fff', margin: 'auto'}}>{contextVal.headerText}</h1>
                     </div>
                     <div className="col-lg-2 theme-toggle__wrapper">
                         <div className='user__toggle-wrapper'>

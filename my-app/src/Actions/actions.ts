@@ -20,12 +20,11 @@ export const displayList = (type: string) => {
     }
 }
 
-//Test 
 interface ActionInterface {
-    actionName: string,
-    otherInfo?: object
+    otherInfo?: string
 }
-export const actionCreatorTest = (actionName :ActionInterface, otherInfo: ActionInterface) => {
+
+export const actionCreator = (actionName :string, otherInfo: string) => {
     return {
         type: actionName,
         payload: otherInfo

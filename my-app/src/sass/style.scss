@@ -7,6 +7,11 @@
 @import './components/pagination.scss';
 @import './components/filters.scss';
 @import './components/loading.scss';
+@import './components/sidebar.scss';
+@import './components/draw.scss';
+
+
+
 main {
     background-color:$morty_white;
     color:#000000;
@@ -20,3 +25,15 @@ blockquote {
 
 // bootstrap doesn't have position on container?? 
 .container {position: relative}
+
+.body__container {
+    display:flex;
+
+    .sidebar__wrapper {
+        width: auto;
+    }
+
+    main {
+        width: 100%;
+    }
+}

@@ -3,9 +3,13 @@ import {
     BrowserRouter as Router,
     Route,
     Routes,
+    Link
   } from "react-router-dom";
 import PrivateRoute from '../PrivateRoutes/PrivateRoute';
-import Homepage from './Homepage';
+import Homepage from './Home/Homepage';
+import Draw from './Draw/Draw';
+import Notes from './Notes/Notes'
+
 export default function App(){
 
     const contextTest = {
@@ -23,7 +27,10 @@ export default function App(){
                                 }
                         />
                     <Route path="/login" element={<Login />} />
+                    <Route path="/draw" element={<Draw />} />
+                    <Route path="/notes" element={<Notes />} />
                 </Routes>
+
             </Router>
     )
 

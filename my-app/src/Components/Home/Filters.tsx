@@ -1,5 +1,5 @@
 import {useSelector, useDispatch} from 'react-redux';
-import  {actionCreator} from '../Actions/Actions';
+import  {actionCreator} from '../../Actions/Actions';
 import { ChangeEvent, useState } from 'react';
 
 export default function Filters() {

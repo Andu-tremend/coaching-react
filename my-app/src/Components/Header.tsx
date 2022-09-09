@@ -47,7 +47,6 @@ export default function Header() {
                         </div>
                     </div>
                     <div className="col-lg-7 header__menu-wrapper">
-                        <h1 style={{color: '#fff', margin: 'auto'}}>{contextVal.headerText}</h1>
                     </div>
                     <div className="col-lg-2 theme-toggle__wrapper">
                         <div className='user__toggle-wrapper'>

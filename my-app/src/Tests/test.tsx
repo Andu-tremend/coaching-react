@@ -5,7 +5,7 @@ import { render, fireEvent, screen, getAllByTestId,renderHook, act, cleanup } fr
 import store from '../Store/store';
 import { Provider } from 'react-redux';
 import {useFetch, useConditionalRender} from '../Functions/index'
-import Filters from '../Components/Filters'
+import Filters from '../Components/Home/Filters'
 import {filterReducer} from '../Reducers/reducers'
 
 

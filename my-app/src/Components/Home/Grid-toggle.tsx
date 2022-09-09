@@ -1,6 +1,6 @@
 import React from 'react';
-import store from '../Store/store';
-import {displayList} from '../Actions/Actions';
+import store from '../../Store/store';
+import {displayList} from '../../Actions/Actions';
 import {connect} from 'react-redux';
 
 

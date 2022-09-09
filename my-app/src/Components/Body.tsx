@@ -1,9 +1,9 @@
 import {useState, useEffect, useContext} from 'react';
-import Grid from './Grid';
-import List from './List';
-import GridToggle from './Grid-toggle';
+import Grid from './Home/Grid';
+import List from './Home/List';
+import GridToggle from './Home/Grid-toggle';
 import Pagination from './Pagination';
-import Filters from './Filters';
+import Filters from './Home/Filters';
 import Loading from './Loading';
 import {testContext} from '../Context/Context';
 import {useConditionalRender, useFetch} from '../Functions/index'
@@ -42,21 +42,24 @@ export default function Body () {
     },[pagination])
 
     return (
-        <main className={`theme__${useConditionalRender(storeState.themeReducer, "morty", "rick")} v-padding-large`}>    
-                
-                <div className='container'>
-                    <h1>{contextVal.bodyText}</h1>
-                    <div className='filters__wrapper'>
-                        <GridToggle  />
-                        <Filters />
-                    </div>
-                    {data.loading && <Loading text={data.notFound ? 'Characters not found' : 'Loading...'} />}
-                    { displayType === 'grid' ? 
-                    <Grid gridView={data.rickData}/> :
-                    <List listView={data.rickData} /> }
-                     < Pagination page={data.page} />
-                </div>
-                
-        </main>
+        <>
+            <main className={`theme__${useConditionalRender(storeState.themeReducer, "morty", "rick")} v-padding-large`}>    
+             
+               <div className='container'>
+                   <h1>{contextVal.bodyText}</h1>
+                   <div className='filters__wrapper'>
+                       <GridToggle  />
+                       <Filters />
+                   </div>
+                   {data.loading && <Loading text={data.notFound ? 'Characters not found' : 'Loading...'} />}
+                   { displayType === 'grid' ? 
+                   <Grid gridView={data.rickData}/> :
+                   <List listView={data.rickData} /> }
+                    < Pagination page={data.page} />
+               </div>
+               
+            </main>
+        </>
     )
 }
+

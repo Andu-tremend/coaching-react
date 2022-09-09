@@ -53,7 +53,6 @@ const itemsDisplayTypeReducer = (state = {display: "grid"}, action: {type: strin
     return state
 }
 
-
     //Pagination reducer
 
     const pagination = (state:any = {currentPage: 1} , action: {type: string, payload: any}) => {
@@ -92,7 +91,6 @@ const itemsDisplayTypeReducer = (state = {display: "grid"}, action: {type: strin
      return state
 }
 
-
 // FILTERS REDUCER
 
 const blankFilters = {
@@ -111,7 +109,7 @@ export const filterReducer = (state: object = blankFilters, action: {type: strin
                 gender: action.payload}
         case 'filter-name':
             return {...state,
-            name: action.payload}
+                name: action.payload}
     }
 
 
@@ -119,10 +117,43 @@ export const filterReducer = (state: object = blankFilters, action: {type: strin
 }
 
 
+
+// const canvaToolsInitialState = {
+//     color: "#aee6e3",
+//     brush: "5",
+//     reset: false
+// }
+
+
+// export const canvaTools = (state: {color: string, brush: string, reset: boolean } = canvaToolsInitialState, action: {type: string, payload: any}) => {
+//     switch(action.type) {
+//         case 'setColor' :
+//             return {...state,
+//                 color: action.payload,
+//                 guma: false}
+//         case 'setBrush' :
+//             return {...state,
+//                 brush: action.payload
+//             }
+//         case 'setReset' :
+//             return {...state,
+//                 reset: action.payload,
+//                 guma: false}
+//         case 'setGuma' :
+//             return {...state,
+//                 guma: action.payload,
+//                 color: "#ffffff",}        
+//     }
+
+//     return state
+// }
+
+
 export default combineReducers ({
     themeReducer: themeReducer,
     logedInReducer,
     itemsDisplayTypeReducer,
     pagination,
-    filterReducer
+    filterReducer,
+    
 })

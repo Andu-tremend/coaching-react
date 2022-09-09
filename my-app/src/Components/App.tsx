@@ -8,6 +8,7 @@ import {
 import PrivateRoute from '../PrivateRoutes/PrivateRoute';
 import Homepage from './Home/Homepage';
 import Draw from './Draw/Draw';
+import Notes from './Notes/Notes'
 
 export default function App(){
 
@@ -27,6 +28,7 @@ export default function App(){
                         />
                     <Route path="/login" element={<Login />} />
                     <Route path="/draw" element={<Draw />} />
+                    <Route path="/notes" element={<Notes />} />
                 </Routes>
 
             </Router>

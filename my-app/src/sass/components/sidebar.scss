@@ -12,17 +12,46 @@
         display: flex;
         flex-direction: column;
         gap: 2rem;
-        padding: 2rem 0.5rem;
+        padding: 2rem 1rem;
         height: 100vh;
     }
 
     &__toggle {
-        width: 2rem;
-        height:2rem;
-        background: red;
+        width: 3rem;
+        height:3rem;
+        background: #fff;
         position: absolute;
-        right:-1rem;
+        right:-1.5rem;
         top: 50%;
         cursor: pointer;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100%;
+        box-shadow: 1px 0px 8px #00000045;
+
+        &.open {
+            img {
+                transform: rotate(180deg);
+            }
+        }
+
+        img {
+            max-width: 1rem;
+            width: auto;
+            transition: transform .3s linear;
+
+        }
+    }
+
+    &__link {
+        text-decoration: none;
+        color: $morty_dark_blue;
+        font-size: 1.5rem;
+
+        img {
+            max-width: 2rem;
+            display: block;
+        }
     }
 }

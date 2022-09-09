@@ -1,4 +1,3 @@
-import SidebarItem from './SidebarItem';
 import { useState } from 'react';
 import { useConditionalRender } from '../../Functions';
 import Draw from '../Draw/Draw'
@@ -14,15 +13,23 @@ export default function SidebarNav() {
         setToggle( state => !state)
     }
 
-    const toggled = useConditionalRender(toggle, "200px" , "100px")
+    const toggled = useConditionalRender(toggle, "200px" , "70px")
 
     return (
         <div className="sidebar__wrapper">
             <div className="sidebar__container" style={{width: toggled }}>
-                <div onClick={handleToggle}  className="sidebar__toggle">
+                <div onClick={handleToggle}  className={`${useConditionalRender(toggle, "open" , "closed")} sidebar__toggle `} >
+                    <img  src={`icon-right.svg` }/>
                 </div>
-                <Link to="/">Characters list</Link>
-                <Link to="draw">Draw</Link>
+                <Link className='sidebar__link' to="/">
+                    <img  src={`icon-list.svg` }/> {useConditionalRender(toggle, "Characters" , "")}
+                </Link>
+                <Link className='sidebar__link' to="/draw">
+                    <img  src={`paintbrush-solid.svg` }/> {useConditionalRender(toggle, "Draw" , "")}
+                </Link>
+                <Link className='sidebar__link' to="/notes">
+                    <img  src={`sticky-note-solid.svg` }/> {useConditionalRender(toggle, "Notes" , "")}
+                </Link>
                 
             </div>
         </div>

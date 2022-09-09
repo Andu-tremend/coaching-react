@@ -14,7 +14,6 @@ export default function LoggedIn() {
                     <SidebarNav />
                     <Body /> 
                 </div>
-                
             </testContext.Provider>
         </div>
     )

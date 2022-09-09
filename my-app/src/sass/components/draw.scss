@@ -1,0 +1,95 @@
+.draw {
+    &__tools-wrapper{
+        max-width: 900px;
+        background-color: $morty_white;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.193);
+        padding: 1rem;
+        border-radius: 0.5rem 0.5rem 0 0 ;
+        @include space-between;
+
+        & input[type="color"] {
+            width: 1.5rem;
+            height: 1.5rem;
+            border: none;
+            padding: 0;
+        }
+
+    
+        & .draw__primary-btn {
+            border: none;
+            background-color: $morty_dark_blue;
+            color: #ffffff;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            display: block;
+            margin-bottom: 0.5rem;
+            width: auto;
+            
+
+            &:hover {
+                background-color: transparentize($color:  $morty_dark_blue, $amount: 0.1);
+            }
+
+            &:active {
+                transform: scale(0.95);
+                box-shadow: inset 0 0 0.2rem rgba(0, 0, 0, 0.451);
+            }
+
+            &:disabled {
+                background-color: gray;
+                transform: scale(0.95);
+            }
+        }
+    }
+
+    &__colors-wrapper {
+        width: 15rem;
+        display:flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+        align-items: flex-start;
+        background: #fff;
+        padding: 1rem;
+    }
+
+    &__preset-colors {
+        &-wrapper {
+            @include flex-start;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            div {
+                width: 1.5rem;
+                height: 1.5rem;
+                border: 1px solid grey
+            }
+        }
+
+        &-buttons {
+            display: flex;
+            width: fit-content;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 1rem;
+            button {
+                background-color: transparent;
+                border: none;
+                
+            }
+        }
+    }   
+
+    &__current-color,
+    &__brush-size {
+        background: #fff;
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+.mouse-follower {
+    pointer-events: none;
+}

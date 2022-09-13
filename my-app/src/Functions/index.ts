@@ -38,7 +38,6 @@ export function useFetch(URL: string) {
         getData();
     }, [URL]);
 
-    console.log(page)
 
     return {
         rickData,

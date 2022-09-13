@@ -2,11 +2,26 @@ import Header from "../Header";
 import SidebarNav from '../SidebarNav/SidebarWrapper';
 import { useConditionalRender } from "../../Functions";
 import {useSelector} from 'react-redux';
+import { useEffect, useState } from "react";
+import FetchData from "../../Services";
+
+
 
 export default function Draw() {
+    const [state, setState] = useState({})
+
+    useEffect( () => {
+        const testing = async () => {
+            const serviceClass = new FetchData("https://rickandmortyapi.com/api/location")
+            const data = await serviceClass.returnData
+            setState(()=> data)
+        }
+        
+        testing()
+    }, [])
 
     const storeState = useSelector((state: any) => state)
-
+    console.log(state)
     return (
         <div>
                 <Header />

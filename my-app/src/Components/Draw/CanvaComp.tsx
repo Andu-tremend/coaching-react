@@ -36,8 +36,10 @@ export default function Canva() {
         Remove = "-"
     }
 
+    // This changes value only to trigger useEffect dependency array
     const handleReset = (e: any) => {
-        setGuma(false)
+        setReset( oldVal => !oldVal)
+        console.log(reset)
     }
 
     const handleGuma = (e: any) => {
@@ -117,6 +119,7 @@ export default function Canva() {
                                 color={color}
                                 brush={brush}
                                 guma={guma} 
+                                reset={reset}
                             />
                         </div>
                         

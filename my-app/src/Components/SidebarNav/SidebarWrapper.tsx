@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useConditionalRender } from '../../Functions';
-import Draw from '../Draw/Draw'
 import {Link} from "react-router-dom";
 
 

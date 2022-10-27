@@ -1,4 +1,4 @@
-import { actionCreator} from '../Actions/Actions';
+import { actionCreator} from '../../Actions/Actions';
 import {useSelector, useDispatch} from 'react-redux';
 
 export default function Pagination (props: any) {

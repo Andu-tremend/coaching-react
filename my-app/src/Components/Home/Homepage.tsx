@@ -1,5 +1,5 @@
-import Header from "../Header";
-import Body from "../Body";
+import Header from "../Header/Header";
+import Body from "./Body";
 import {testContext, appNamingData} from '../../Context/Context';
 import SidebarNav from '../SidebarNav/SidebarWrapper';
 

@@ -1,9 +1,9 @@
 
 import {useSelector, useDispatch} from 'react-redux';
-import {toggleAction} from '../Actions/Actions'
-import LoggedUser from './LoggedUser';
+import {toggleAction} from '../../Actions/Actions'
+import LoggedUser from '../Authentication/LoggedUser';
 import { useState, useContext } from 'react';
-import {testContext} from '../Context/Context';
+import {testContext} from '../../Context/Context';
 
 
 

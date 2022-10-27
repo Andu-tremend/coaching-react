@@ -4,11 +4,11 @@
 import { render, fireEvent, screen, getAllByTestId,renderHook, act, cleanup } from "@testing-library/react";
 import store from '../Store/store';
 import { Provider } from 'react-redux';
-import {useFetch, useConditionalRender} from '../Functions/index'
+import { useConditionalRender} from '../Functions/index'
 import Filters from '../Components/Home/Filters'
 import {filterReducer} from '../Reducers/reducers'
-
-
+import AbstractRespository from '../Repository/index'
+import FetchClient from '../Services/FetchClient'
 
 test("Render filters and update filters' reducer based on filter values", () => {
     render( <Provider store={store} >
@@ -42,22 +42,52 @@ test(" Use useConditionalRender custom hook ", () => {
     cleanup()
 })
 
-
-global.fetch = jest.fn(() =>
-  Promise.resolve({
-    json: () => Promise.resolve({ test: 100 }),
-  }),
-) as jest.Mock;
-
-const getDataMock = async (PARAM: string) => {
-    try {
-        const response = await fetch(PARAM)
-        const json = await response.json()
-        return json
-
+export class CusotmRepo extends AbstractRespository<string, any> {
+    get status404 () {
+        return "This is a 404"
     }
-    catch (error) {
-        console.log(error)
-    }
-    
 }
+
+const testParams = [
+    {
+        key: "ceva",
+        value: 22
+    },
+    {
+        key: "altceva",
+        value: 24
+    }
+]
+
+test("Test Abstract repo methods", () => {
+    const repo = new CusotmRepo();
+    const spyBuildQueryParams = jest.spyOn(repo as any, 'buildQueryParams').mockImplementation((testParams: []) => {
+        if (!testParams ) {
+            return ""
+        }
+        const queryVal = testParams.map(({key, value}) => {
+            return `${key}=${value}`
+        })
+        return `?${queryVal.join("&")}`
+    })
+
+    expect(repo.buildQueryParams(testParams)).toBe("?ceva=22&altceva=24") // Test with query params condition
+    expect(repo.buildQueryParams()).toBe("") // Test if there are no query params
+
+    const spyBuildUrl = jest.spyOn(repo, "buildUrl").mockImplementation( (path) => {
+        if (!path) {
+            return 'https://base-url.ro'
+        }
+
+        return `https://base-url.ro/${path}` 
+    })
+
+    expect(repo.buildUrl()).toBe("https://base-url.ro")
+    expect(repo.buildUrl("character")).toBe("https://base-url.ro/character")
+
+    
+})
+
+
+
+

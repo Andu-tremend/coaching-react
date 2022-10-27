@@ -22,7 +22,7 @@ export default function CanvaSheet(props: any) {
         context.canvas.height = canvaStyle.height;
         context.lineCap = "round";
         ctxRef.current = context;
-    }, [ ])
+    }, [ props.reset])
 
     const position = (X:number, Y:number) => {
         const canvaCoord = canvasRef.current.getBoundingClientRect()
@@ -48,6 +48,7 @@ export default function CanvaSheet(props: any) {
         ctxRef.current.stroke()
         ctxRef.current.strokeStyle = props.color
         ctxRef.current.lineWidth = props.brush;
+      
     }
 
     const drawStop = () => {

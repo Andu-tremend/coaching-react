@@ -2,54 +2,48 @@ import {useSelector} from 'react-redux';
 import {useState, useEffect, useContext} from 'react';
 
 
+import AbstractRespository from '../Repository';
+import FetchClient from '../Services/FetchClient';
+
 // Just a basic custom hook
 
 export  function useConditionalRender(conditionVal:boolean, ifTrueVal:string, ifFalseVal:string) {
     return conditionVal ? ifTrueVal : ifFalseVal
 }
 
+class Repository extends AbstractRespository<string, any> {
 
-// Hook to fetch data
-export function useFetch(URL: string) {
-    const [rickData, setRickData] = useState<any>([]);
-    const [loading, setLoading] = useState(false);
-    const [notFound, setNotFound] = useState(false)
-    const [page, setPage] = useState<any>()
-
-   
-
-    useEffect( () => {
-        const getData = async () => {
-            try {
-                setLoading(true)
-                const response = await fetch(URL)
-                const json = await response.json();
-                response.status === 200 && setLoading(false);
-                response.status !== 200 && setNotFound(true)
-                setRickData(json.results);
-                setPage(json);
-            }
-
-            catch (error) {
-                console.log(error)
-            }
-            
-        }
-        getData();
-    }, [URL]);
-
-
-    return {
-        rickData,
-        page,
-        loading,
-        notFound
-    } 
-
-    
-
+    constructor(client: any, url?:string ) {
+        super();
+        this.baseUrl = url
+        this.apiClient = client
+    }
+    get status400():string {
+        return "Not implemented"
+    }
+    get status401():string {
+        return "Not implemented"
+    }
+    get status403():string {
+        return "Not implemented"
+    }
+    get status404():string{
+        return "Not implemented"
+    }
 }
 
+// Simplier hook for fetch
 
-
-// Hook for draw on canvas
+export function useApiConsumer (url:string, path?:string, query?: {key: string, value: any}[]) {
+    const [data, setData] = useState<object>()
+    const [jsonData, setJsonData] = useState<object>()
+    const fetchClient = new FetchClient()
+    const repoFetch = new Repository(fetchClient, url)
+    useEffect( () => {
+        const fetchConsume = repoFetch.get( path, query )
+                fetchConsume
+                .then( (res) => {setData(res); return res.json()})
+                .then( (json) => setJsonData(json));
+    }, [url])
+    return {data, jsonData}
+}

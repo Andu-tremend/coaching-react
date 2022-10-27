@@ -1,11 +1,12 @@
-import { useCallback, useEffect, useMemo } from "react";
+import { useMemo } from "react";
 
 export default function List (props:any) {
    
 
     const listView = props.listView?.map((item:any) => {
             return (
-                <div key={item.id} className="homepage-list__item">
+                // Used string at key to make the key unique from the other item.id 
+                <div key={item.id + "ceva"} className="homepage-list__item">
                     <div className='image-wrapper'>{item.image && <img src={item.image} alt="item.name" />}</div>
                     <div className='content-wrapper'>
                         {item.name &&<div><span>Name:</span> {item.name}</div>}
@@ -22,10 +23,10 @@ export default function List (props:any) {
 
     })
 
-    const pepe = useMemo( () => listView, [props.listView])
+    const memoThis = useMemo( () => listView, [props.listView])
     
     return (
-        <div className='homepage-list'>{pepe}</div>
+        <div className='homepage-list'>{memoThis}</div>
     )
 }
 

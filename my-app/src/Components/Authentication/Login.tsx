@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import Header from './Header';
+import Header from '../Header/Header';
 import {useSelector, useDispatch} from 'react-redux';
-import {loggedIn} from '../Actions/Actions';
-import users from '../Login/users';
+import {loggedIn} from '../../Actions/Actions';
+import users from '../../Login/users';
 import {useNavigate} from "react-router-dom";
 
 // To be disscussed on coaching session

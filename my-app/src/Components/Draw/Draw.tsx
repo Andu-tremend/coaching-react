@@ -1,4 +1,4 @@
-import Header from "../Header";
+import Header from "../Header/Header";
 import SidebarNav from '../SidebarNav/SidebarWrapper';
 import Canva from "./CanvaComp";
 
